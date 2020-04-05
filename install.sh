@@ -5,6 +5,10 @@
 
 #!/bin/bash
 
+
+if-shell "test '#{$TMUX_VERSION_MAJOR} -gt 1 -o \( #{$TMUX_VERSION_MAJOR} -eq 1 -a #{$TMUX_VERSION_MINOR} -ge 8 \)'" 'unbind %; bind % split-window -h -c "#{pane_current_path}"'
+exit
+
 trap exit ERR
 if [ -d $HOME/.tmux  ]
 then
@@ -18,11 +22,9 @@ then
     mv $HOME/.tmux.conf $HOME/.tmux.conf.bak
 fi
 
-cp -r $HOME/tmux-config $HOME/.tmux
+cp -r $HOME/.config/tmux-config $HOME/.tmux
 ln -s $HOME/.tmux/.tmux.conf $HOME/.tmux.conf
 
-cd ~/.tmux && git submodule init && git submodule update
+brew install tmux-mem-cpu-load
 
-cd ~/.tmux/vendor/tmux-mem-cpu-load && cmake . && make && sudo make install
-
-tmux source-file ~/.tmux.conf
+tmux source-file ~/.tmux/tmux.conf

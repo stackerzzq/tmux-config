@@ -36,46 +36,10 @@ Stats
 
 Works on Linux and OS X.
 
-Prep ourself to download submodule (if you forgot `--recursive` when cloning):
-
-```bash
-git submodule init
-```
-
-Download submodule:
-
-```bash
-git submodule update
-```
-
-Change dir to tmux-mem-cpu-load:
-
-```bash
-cd ~/.tmux/vendor/tmux-mem-cpu-load
-```
-
-Make ___build directory and `cd` into it:
-
-```bash
-mkdir build; cd build
-```
-
-General make file:
-
-```bash
-cmake ..
-```
-
-Compile binary:
-
-```bash
-make
-```
-
 Install our binary to `/usr/local/bin/tmux-mem-cpu-load`:
 
 ```bash
-sudo make install
+brew install tmux-mem-cpu-load
 ```
 
 (No need to do `sudo` if on OS X / macOS)
